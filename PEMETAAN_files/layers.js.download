@@ -1,0 +1,53 @@
+ol.proj.get("EPSG:4326").setExtent([108.583193, -7.393814, 110.157673, -6.694776]);
+var wms_layers = [];
+var baseLayer = new ol.layer.Group({
+    'title': '',
+    layers: [
+new ol.layer.Tile({
+    'title': 'Stamen Toner',
+    'type': 'base',
+        source: new ol.source.Stamen({
+        layer: 'toner'
+        })
+})
+]
+});
+var format_kecamatan_0 = new ol.format.GeoJSON();
+var features_kecamatan_0 = format_kecamatan_0.readFeatures(json_kecamatan_0, 
+            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:4326'});
+var jsonSource_kecamatan_0 = new ol.source.Vector({
+    attributions: [new ol.Attribution({html: '<a href=""></a>'})],
+});
+jsonSource_kecamatan_0.addFeatures(features_kecamatan_0);var lyr_kecamatan_0 = new ol.layer.Vector({
+                declutter: true,
+                source:jsonSource_kecamatan_0, 
+                style: style_kecamatan_0,
+    title: 'kecamatan<br />\
+    <img src="styles/legend/kecamatan_0_0.png" /> 3329010<br />\
+    <img src="styles/legend/kecamatan_0_1.png" /> 3329020<br />\
+    <img src="styles/legend/kecamatan_0_2.png" /> 3329030<br />\
+    <img src="styles/legend/kecamatan_0_3.png" /> 3329040<br />\
+    <img src="styles/legend/kecamatan_0_4.png" /> 3329050<br />\
+    <img src="styles/legend/kecamatan_0_5.png" /> 3329060<br />\
+    <img src="styles/legend/kecamatan_0_6.png" /> 3329070<br />\
+    <img src="styles/legend/kecamatan_0_7.png" /> 3329080<br />\
+    <img src="styles/legend/kecamatan_0_8.png" /> 3329090<br />\
+    <img src="styles/legend/kecamatan_0_9.png" /> 3329100<br />\
+    <img src="styles/legend/kecamatan_0_10.png" /> 3329110<br />\
+    <img src="styles/legend/kecamatan_0_11.png" /> 3329120<br />\
+    <img src="styles/legend/kecamatan_0_12.png" /> 3329130<br />\
+    <img src="styles/legend/kecamatan_0_13.png" /> 3329140<br />\
+    <img src="styles/legend/kecamatan_0_14.png" /> 3329150<br />\
+    <img src="styles/legend/kecamatan_0_15.png" /> 3329151<br />\
+    <img src="styles/legend/kecamatan_0_16.png" /> 3329160<br />\
+    <img src="styles/legend/kecamatan_0_17.png" /> <br />'
+        });
+
+lyr_kecamatan_0.setVisible(true);
+var layersList = [baseLayer,lyr_kecamatan_0];
+lyr_kecamatan_0.set('fieldAliases', {'ID': 'ID', 'ID_Kec': 'ID_Kec', 'Kecamatan': 'Kecamatan', 'kode_kab': 'kode_kab', 'SMA': 'SMA', 'SMK': 'SMK', });
+lyr_kecamatan_0.set('fieldImages', {'ID': 'TextEdit', 'ID_Kec': 'TextEdit', 'Kecamatan': 'TextEdit', 'kode_kab': 'TextEdit', 'SMA': 'TextEdit', 'SMK': 'TextEdit', });
+lyr_kecamatan_0.set('fieldLabels', {'ID': 'inline label', 'ID_Kec': 'inline label', 'Kecamatan': 'inline label', 'kode_kab': 'inline label', 'SMA': 'inline label', 'SMK': 'inline label', });
+lyr_kecamatan_0.on('precompose', function(evt) {
+    evt.context.globalCompositeOperation = 'normal';
+});
